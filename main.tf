@@ -69,9 +69,9 @@ resource "aws_security_group" "web-sg" {
   }
 
   // connectivity to ubuntu mirrors is required to run `apt-get update` and `apt-get install apache2`
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
   egress {
     description = "Allow outbound internet access for package installation"
-    #tfsec:ignore:aws-vpc-no-public-egress-sgr
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
